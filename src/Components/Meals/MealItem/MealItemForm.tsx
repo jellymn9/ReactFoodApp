@@ -1,6 +1,16 @@
 import Input from "../../UI/Input";
+import Cart from "../../Cart/Cart";
+import { useState } from "react";
 
 const MealItemForm = function () {
+  const [isCartModalActive, setCartModalActive] = useState(false);
+
+  const handleCloseCart = () => {
+    console.log("uuuuu I wanna touch the sky");
+    setCartModalActive(false);
+    console.log("isCartModalActive:", isCartModalActive);
+  };
+  console.log("onRender:", isCartModalActive);
   return (
     <form>
       <Input
@@ -13,7 +23,18 @@ const MealItemForm = function () {
           defaultValue: "1",
         }}
       />
-      <button>+ Add</button>
+      <button
+        onClick={(event) => {
+          setCartModalActive(true);
+          event.preventDefault();
+        }}
+      >
+        + Add
+      </button>
+      <Cart
+        isCartModalActive={isCartModalActive}
+        handleClose={handleCloseCart}
+      />
     </form>
   );
 };
