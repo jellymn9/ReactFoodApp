@@ -14,7 +14,7 @@ export const Offset = styled.div`
   margin-bottom: 5px;
 `;
 
-export const ModalCard = styled.div<{ isActive: boolean }>`
+export const ModalCard = styled.div`
   position: absolute;
   width: 59%;
   height: max-content;
@@ -23,5 +23,11 @@ export const ModalCard = styled.div<{ isActive: boolean }>`
   top: 20%;
   left: 20%;
   z-index: 100;
-  display: ${(isActive) => (isActive ? "block" : "none")};
+`;
+
+export const Backdrop = styled.div`
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);;
 `;

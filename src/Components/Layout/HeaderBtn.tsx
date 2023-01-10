@@ -1,9 +1,9 @@
 import CartIcon from '../Cart/CartIcon'
 import { CartBtn } from '../Layout/Header.styled'
 
-const HeaderBtn = function () {
+const HeaderBtn = function (props: {handleOpen: () => void}) {
   return (
-    <CartBtn>
+    <CartBtn onClick={() => props.handleOpen()}>
       <span>
         <CartIcon />
       </span>

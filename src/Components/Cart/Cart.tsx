@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import { ModalCard } from "../UI/GlobalStyle.styled";
+import { ModalCard, Backdrop } from "../UI/GlobalStyle.styled";
 
 type cartItem = {
   id: string;
@@ -9,13 +9,12 @@ type cartItem = {
 };
 interface CartTemplateProps {
   cartItems: cartItem[];
-  isActive: boolean;
   handleClose: () => void;
 }
 
 const CartTemplate = function (props: CartTemplateProps) {
   return (
-    <ModalCard isActive={props.isActive}>
+    <ModalCard>
       {props.cartItems &&
         props.cartItems.map((cartItem) => <li>{cartItem.name}</li>)}
       <div>
@@ -23,7 +22,7 @@ const CartTemplate = function (props: CartTemplateProps) {
         <span>35.7</span>
       </div>
       <div>
-        <button onClick={() => props.handleClose()}>Close</button>
+        <button onClick={(e) => props.handleClose()}>Close</button>
         <button>Order </button>
       </div>
     </ModalCard>
@@ -31,7 +30,6 @@ const CartTemplate = function (props: CartTemplateProps) {
 };
 
 const Cart = function (props: {
-  isCartModalActive: boolean;
   handleClose: () => void;
 }) {
   const cartItems: cartItem[] = [
@@ -45,17 +43,13 @@ const Cart = function (props: {
 
   return (
     <>
-      {/* {ReactDOM.createPortal( */}
-      {props.isCartModalActive && (
+      {ReactDOM.createPortal(<Backdrop onClick={() => props.handleClose()}/>, document.getElementById("backdrop-root") as HTMLElement)}
+      {ReactDOM.createPortal(
         <CartTemplate
           cartItems={cartItems}
-          isActive={props.isCartModalActive}
           handleClose={props.handleClose}
-        />
+        />,document.getElementById("modal-root") as HTMLElement
       )}
-
-      {/* document.getElementById("modal-root") as HTMLElement
-      )} */}
     </>
   );
 };

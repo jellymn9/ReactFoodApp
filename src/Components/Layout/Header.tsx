@@ -1,13 +1,14 @@
+
 import { HeaderStyle, FoodImage } from './Header.styled'
 // import FoodImage from '../../assets/spaghetti.jpg'
 import HeaderBtn from './HeaderBtn'
 
-const Header = function () {
+const Header = function (props: {handleOpen: () => void}) {
   return (
     <>
       <HeaderStyle>
         <h1>ReactMeals</h1>
-        <HeaderBtn />
+        <HeaderBtn handleOpen={props.handleOpen} />
       </HeaderStyle>
       <FoodImage />
     </>
