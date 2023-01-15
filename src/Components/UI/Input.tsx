@@ -1,3 +1,5 @@
+import React from "react";
+
 interface InputProps {
   label: string;
   input: {
@@ -9,13 +11,13 @@ interface InputProps {
   };
 }
 
-const Input = function (props: InputProps) {
+const Input = React.forwardRef((props: InputProps, ref: any) => {
   return (
     <div>
       <label htmlFor={props.input.id}>{props.label}</label>
-      <input {...props.input} />
+      <input ref={ref} {...props.input} />
     </div>
   );
-};
+});
 
 export default Input;

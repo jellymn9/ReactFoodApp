@@ -1,10 +1,10 @@
 import React from "react";
 
 interface CartStore {
-  items: { amount: number }[];
+  items: { id: string; name: string; amount: number; price: number }[];
   totalAmount: number;
-  addItem: () => any;
-  removeItem: (id: number) => any;
+  addItem?: any;
+  removeItem?: any;
 }
 
 const CartContext = React.createContext<CartStore>({

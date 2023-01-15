@@ -16,7 +16,23 @@ const defaultCartState = {
 
 const cartReducer = (state: any, action: actionType) => {
   if (action.type === "ADD") {
-    const updatedItems = [...state.items, action.data];
+    let updatedItems;
+    const indexOfExsistingItem = state.items.findIndex((item: any) => {
+      console.log(item.id, action.data.id);
+      return item.id === action.data.id;
+    });
+    console.log("bla: ", indexOfExsistingItem);
+    if (indexOfExsistingItem >= 0) {
+      state.items[indexOfExsistingItem] = {
+        ...state.items[indexOfExsistingItem],
+        amount: state.items[indexOfExsistingItem].amount + 1,
+      };
+      updatedItems = [...state.items];
+      console.log(updatedItems);
+    } else {
+      updatedItems = [...state.items, action.data];
+    }
+    // const updatedItems = [...state.items, action.data];
     const updatedTotalAmount =
       state.totalAmount + action.data.price * action.data.amount;
     return { items: updatedItems, totalAmount: updatedTotalAmount };
@@ -41,8 +57,8 @@ const CartProvider = (props: any) => {
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
-    addItem: () => addItemToCartHandler,
-    removeItem: () => removeItemFromCartHandler,
+    addItem: addItemToCartHandler,
+    removeItem: removeItemFromCartHandler,
   };
 
   return (
