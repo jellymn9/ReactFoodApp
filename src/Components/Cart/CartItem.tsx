@@ -14,7 +14,7 @@ const CartItem = (props: any) => {
       </div>
       <div>
         <button onClick={props.onRemove}>-</button>
-        <button onClick={props.onAdd}>+</button>
+        <button onClick={() => props.addItem()}>+</button>
       </div>
       <Offset />
     </li>

@@ -18,10 +18,6 @@ interface CartTemplateProps {
 }
 
 const CartTemplate = function (props: CartTemplateProps) {
-  const addItem = (item: cartItem) => {
-    props.add(item);
-  };
-
   return (
     <ModalCard>
       {props.cartItems &&
@@ -29,7 +25,7 @@ const CartTemplate = function (props: CartTemplateProps) {
           <CartItem
             {...cartItem}
             key={cartItem.id}
-            addItem={() => addItem(cartItem)}
+            addItem={() => props.add(cartItem)}
           />
         ))}
       <div>
