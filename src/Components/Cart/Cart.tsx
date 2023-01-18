@@ -25,7 +25,7 @@ const CartTemplate = function (props: CartTemplateProps) {
           <CartItem
             {...cartItem}
             key={cartItem.id}
-            addItem={() => props.add(cartItem)}
+            addItem={props.add.bind(null, cartItem)}
           />
         ))}
       <div>
