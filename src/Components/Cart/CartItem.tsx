@@ -13,7 +13,7 @@ const CartItem = (props: any) => {
         <span style={{ marginLeft: "20px" }}>Amount: {props.amount}</span>
       </div>
       <div>
-        <button onClick={props.onRemove}>-</button>
+        <button onClick={() => props.onRemove()}>-</button>
         <button onClick={() => props.addItem()}>+</button>
       </div>
       <Offset />

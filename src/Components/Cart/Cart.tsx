@@ -15,6 +15,7 @@ interface CartTemplateProps {
   totalAmount: number;
   handleClose: () => void;
   add: (i: cartItem) => {};
+  remove: (i: cartItem) => {};
 }
 
 const CartTemplate = function (props: CartTemplateProps) {
@@ -26,6 +27,7 @@ const CartTemplate = function (props: CartTemplateProps) {
             {...cartItem}
             key={cartItem.id}
             addItem={props.add.bind(null, cartItem)}
+            onRemove={props.remove.bind(null, cartItem)}
           />
         ))}
       <div>
@@ -55,6 +57,7 @@ const Cart = function (props: { handleClose: () => void }) {
           totalAmount={cartCtx.totalAmount}
           handleClose={props.handleClose}
           add={cartCtx.addItem}
+          remove={cartCtx.removeItem}
         />,
         document.getElementById("modal-root") as HTMLElement
       )}
