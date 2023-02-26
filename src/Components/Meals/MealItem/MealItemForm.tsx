@@ -1,8 +1,6 @@
 import Input from "../../UI/Input";
-import { InputHTMLAttributes, useContext, useEffect, useState } from "react";
-import CartContext from "../../../store/cart-context";
+import { useState } from "react";
 import { useRef } from "react";
-import { isPropertySignature } from "typescript";
 
 const MealItemForm = function (props: any) {
   // const [item, setItem] = useState({});

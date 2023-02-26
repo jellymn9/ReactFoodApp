@@ -1,21 +1,14 @@
 import ReactDOM from "react-dom";
 import { ModalCard, Backdrop } from "../UI/GlobalStyle.styled";
-import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem";
-import { useContext } from "react";
-
-type cartItem = {
-  id: string;
-  name: string;
-  amount: number;
-  price: number;
-};
+import { useSelector, useDispatch } from "react-redux";
+import { StateI, ItemT } from "../../store/index";
 interface CartTemplateProps {
-  cartItems: cartItem[];
+  cartItems: ItemT[];
   totalAmount: number;
   handleClose: () => void;
-  add: (i: cartItem) => {};
-  remove: (i: cartItem) => {};
+  add: (i: ItemT) => void;
+  remove: (i: ItemT) => void;
 }
 
 const CartTemplate = function (props: CartTemplateProps) {
@@ -43,7 +36,17 @@ const CartTemplate = function (props: CartTemplateProps) {
 };
 
 const Cart = function (props: { handleClose: () => void }) {
-  const cartCtx = useContext(CartContext);
+  const dispatch = useDispatch();
+  const items = useSelector<StateI, ItemT[]>((state) => state.items);
+  const totalAmount = useSelector<StateI, number>((state) => state.totalAmount);
+
+  const addItem = (item: ItemT) => {
+    dispatch<{ type: "ADD"; data: ItemT }>({ type: "ADD", data: item });
+  };
+
+  const removeItem = (item: ItemT) => {
+    dispatch<{ type: "REMOVE"; data: ItemT }>({ type: "REMOVE", data: item });
+  };
 
   return (
     <>
@@ -53,11 +56,11 @@ const Cart = function (props: { handleClose: () => void }) {
       )}
       {ReactDOM.createPortal(
         <CartTemplate
-          cartItems={cartCtx.items}
-          totalAmount={cartCtx.totalAmount}
+          cartItems={items}
+          totalAmount={totalAmount}
           handleClose={props.handleClose}
-          add={cartCtx.addItem}
-          remove={cartCtx.removeItem}
+          add={addItem}
+          remove={removeItem}
         />,
         document.getElementById("modal-root") as HTMLElement
       )}
