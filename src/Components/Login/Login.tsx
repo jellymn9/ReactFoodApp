@@ -1,11 +1,13 @@
+import Input from "../UI/Input";
+
 function Login() {
   return (
     <div>
       <h1>Login page</h1>
-      <p>Username</p>
-      <input></input>
-      <p>Password</p>
-      <input></input>
+      <div style={{width: "200px"}}>
+        <Input label="username" input={{id: "username_input", type: "text", min: "3", max: "13", defaultValue: ""}} />
+        <Input label="password" input={{id: "password_input", type: "text", min: "5", max: "13", defaultValue: ""}} />
+      </div>
     </div>
   );
 }

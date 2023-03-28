@@ -1,4 +1,5 @@
 import React from "react";
+import {InputWrapper} from "./Input.styled";
 
 interface InputProps {
   label: string;
@@ -13,10 +14,10 @@ interface InputProps {
 
 const Input = React.forwardRef((props: InputProps, ref: any) => {
   return (
-    <div>
+    <InputWrapper>
       <label htmlFor={props.input.id}>{props.label}</label>
       <input ref={ref} {...props.input} />
-    </div>
+    </InputWrapper>
   );
 });
 
