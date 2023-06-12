@@ -1,5 +1,6 @@
 import { Card, Offset } from "../UI/GlobalStyle.styled";
 import MealItem from "./MealItem/MealItem";
+import { useDispatch } from "react-redux";
 
 const DUMMY_MEALS = [
   {
@@ -23,6 +24,8 @@ const DUMMY_MEALS = [
 ];
 
 const AvailableMeals = function () {
+  const dispatch = useDispatch();
+
   return (
     <section>
       <Card>
