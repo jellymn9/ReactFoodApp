@@ -1,6 +1,9 @@
 import { Card, Offset } from "../UI/GlobalStyle.styled";
 import MealItem from "./MealItem/MealItem";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { StateType } from "../../store/index";
+import { ProductType } from "../../store/products/products.reducer";
 
 const DUMMY_MEALS = [
   {
@@ -25,24 +28,35 @@ const DUMMY_MEALS = [
 
 const AvailableMeals = function () {
   const dispatch = useDispatch();
+  const products = useSelector<StateType, Promise<ProductType[]>>(
+    (state) => state.products
+  ).then((d) => d);
+
+  console.log("P: ", products);
+
+  useEffect(() => {
+    dispatch({ type: "GET_PRODUCTS" });
+  }, []);
 
   return (
     <section>
       <Card>
-        <ul>
-          {DUMMY_MEALS.map((meal) => (
-            <>
-              <MealItem
-                key={meal.id}
-                id={meal.id}
-                name={meal.name}
-                description={meal.description}
-                price={meal.price}
-              />
-              <Offset />
-            </>
-          ))}
-        </ul>
+        {/* {products && (
+          <ul>
+            {products.map((product) => (
+              <>
+                <MealItem
+                  key={product.id}
+                  id={product.id}
+                  name={product.name}
+                  description={product.description}
+                  price={product.price}
+                />
+                <Offset />
+              </>
+            ))}
+          </ul>
+        )} */}
       </Card>
     </section>
   );

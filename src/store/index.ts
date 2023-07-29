@@ -1,4 +1,4 @@
-import { legacy_createStore as createStore } from "redux"; // use reduxToolKit later
+import { legacy_createStore as createStore, applyMiddleware } from "redux"; // use reduxToolKit later
 
 import reducers from "./reducers";
 
@@ -60,7 +60,16 @@ const defaultCartState: StateI = {
 //   return defaultCartState;
 // };
 
-const store = createStore(reducers);
+const loggerMiddleware = (storeAPI: any) => (next: any) => (action: any) => {
+  console.log("dispatching", action);
+  let result = next(action);
+  console.log("next state", storeAPI.getState());
+  return result;
+};
+const middlewareEnhancer = applyMiddleware(loggerMiddleware);
+const store = createStore(reducers, middlewareEnhancer);
+
+export type StateType = ReturnType<typeof store.getState>;
 
 // const counterSubscriber = () => {
 //   const latestState = store.getState();

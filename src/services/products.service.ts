@@ -1,6 +1,8 @@
+import { ProductType } from "../store/products/products.reducer";
+
 const url = new URL("https://641ec6d6ad55ae01ccafadc3.mockapi.io/products");
 
-export const getProducts = async () => {
+export const getProducts = (): Promise<ProductType[]> => {
   return fetch(url, {
     method: "GET",
     headers: { "content-type": "application/json" },
