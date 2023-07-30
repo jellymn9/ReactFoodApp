@@ -36,11 +36,6 @@ function removeItem(items: Array<ItemT>, data: ItemT) {
     } else {
       updatedItems = updatedItems.filter((item) => item.id !== data.id);
     }
-    // dispatch({
-    //   type: "DECREASE_AMOUNT",
-    //   data: { price: data.price, amount: data.amount },
-    // });
-    // should I use store.dispatch instead?
     return updatedItems;
   }
   return items;

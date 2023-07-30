@@ -28,10 +28,9 @@ const DUMMY_MEALS = [
 
 const AvailableMeals = function () {
   const dispatch = useDispatch();
-  const products = useSelector<StateType, Promise<ProductType[]>>(
+  const products = useSelector<StateType, ProductType[]>(
     (state) => state.products
-  ).then((d) => d);
-
+  );
   console.log("P: ", products);
 
   useEffect(() => {
@@ -41,7 +40,7 @@ const AvailableMeals = function () {
   return (
     <section>
       <Card>
-        {/* {products && (
+        {products && (
           <ul>
             {products.map((product) => (
               <>
@@ -56,7 +55,7 @@ const AvailableMeals = function () {
               </>
             ))}
           </ul>
-        )} */}
+        )}
       </Card>
     </section>
   );

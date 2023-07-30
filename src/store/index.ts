@@ -1,4 +1,5 @@
 import { legacy_createStore as createStore, applyMiddleware } from "redux"; // use reduxToolKit later
+import { getProducts } from "../services/products.service";
 
 import reducers from "./reducers";
 
@@ -60,12 +61,18 @@ const defaultCartState: StateI = {
 //   return defaultCartState;
 // };
 
-const loggerMiddleware = (storeAPI: any) => (next: any) => (action: any) => {
-  console.log("dispatching", action);
-  let result = next(action);
-  console.log("next state", storeAPI.getState());
-  return result;
-};
+const loggerMiddleware =
+  (storeAPI: any) => (next: any) => async (action: any) => {
+    console.log("dispatching", action);
+    if (action.type === "GET_PRODUCTS") {
+      console.log("!!!!!!!");
+      const products = await getProducts();
+      // storeAPI.dispatch({ type: "GET_PRODUCTS_SUCCESS", data: products });
+      // OR
+      return next({ type: "GET_PRODUCTS_SUCCESS", data: products });
+    }
+    return next(action);
+  };
 const middlewareEnhancer = applyMiddleware(loggerMiddleware);
 const store = createStore(reducers, middlewareEnhancer);
 

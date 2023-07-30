@@ -1,5 +1,3 @@
-import { getProducts } from "../../services/products.service";
-
 export type ProductType = {
   id: string;
   name: string;
@@ -7,29 +5,23 @@ export type ProductType = {
   price: number;
 };
 
-async function fetchProducts(state: Array<ProductType>) {
-  const products = await getProducts();
-  console.log("products: ", products);
-  if (products) {
-    console.log("1");
-    return products;
-  }
-  return state;
+function updateP(products: Array<ProductType>) {
+  return products;
 }
 
-type ActionTypeT = "GET_PRODUCTS";
+type ActionTypeT = "GET_PRODUCTS" | "GET_PRODUCTS_SUCCESS";
 
 type ActionT = {
   type: ActionTypeT;
+  data?: any; // come back to this
 };
 
-const products = async function (
-  state: Array<ProductType> = [],
-  action: ActionT
-) {
+const products = function (state: Array<ProductType> = [], action: ActionT) {
   switch (action.type) {
     case "GET_PRODUCTS":
-      return await fetchProducts(state);
+      return state;
+    case "GET_PRODUCTS_SUCCESS":
+      return updateP(action.data);
     default:
       return state;
   }

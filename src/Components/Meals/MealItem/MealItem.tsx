@@ -13,7 +13,7 @@ interface MealItemProps {
 const MealItem = function (props: MealItemProps) {
   const dispatch = useDispatch();
 
-  const price = `$${props.price.toFixed(2)}`;
+  // const price = `$${props.price.toFixed(2)}`;
 
   const addToCartHandler = (amount: number) => {
     dispatch<{ type: "ADD"; data: ItemT }>({
@@ -32,7 +32,7 @@ const MealItem = function (props: MealItemProps) {
       <div>
         <h3>{props.name}</h3>
         <div>{props.description}</div>
-        <div>{price}</div>
+        <div>{props.price}</div>
       </div>
       <div>
         <MealItemForm onAddToCart={addToCartHandler} />
