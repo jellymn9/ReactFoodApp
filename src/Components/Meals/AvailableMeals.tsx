@@ -5,33 +5,11 @@ import { useEffect } from "react";
 import { StateType } from "../../store/index";
 import { ProductType } from "../../store/products/products.reducer";
 
-const DUMMY_MEALS = [
-  {
-    id: "m1",
-    name: "Sushi",
-    description: "Finest fish and veggies",
-    price: 22.99,
-  },
-  {
-    id: "m2",
-    name: "Schnitzel",
-    description: "A German specialty",
-    price: 16.5,
-  },
-  {
-    id: "m3",
-    name: "Barbecue Burger",
-    description: "American, raw, meaty",
-    price: 26.5,
-  },
-];
-
 const AvailableMeals = function () {
   const dispatch = useDispatch();
   const products = useSelector<StateType, ProductType[]>(
     (state) => state.products
   );
-  console.log("P: ", products);
 
   useEffect(() => {
     dispatch({ type: "GET_PRODUCTS" });
