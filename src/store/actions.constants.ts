@@ -1,4 +1,20 @@
-type ActionTypeT =
+export const INCREASE_AMOUNT = "INCREASE_AMOUNT";
+export const DECREASE_AMOUNT = "DECREASE_AMOUNT";
+export const GET_PRODUCTS = "GET_PRODUCTS";
+export const GET_PRODUCTS_SUCCESS = "GET_PRODUCTS_SUCCESS";
+export const ADD = "ADD";
+export const REMOVE = "REMOVE";
+
+// const actions = {
+//   INCREASE_AMOUNT: INCREASE_AMOUNT,
+//   DECREASE_AMOUNT: DECREASE_AMOUNT,
+//   GET_PRODUCTS: GET_PRODUCTS,
+//   GET_PRODUCTS_SUCCESS: GET_PRODUCTS_SUCCESS,
+//   ADD: ADD,
+//   REMOVE: REMOVE,
+// };
+
+export type ActionTypeT =
   | "INCREASE_AMOUNT"
   | "DECREASE_AMOUNT"
   | "GET_PRODUCTS"
@@ -6,4 +22,4 @@ type ActionTypeT =
   | "ADD"
   | "REMOVE";
 
-export default ActionTypeT;
+// export default actions;
