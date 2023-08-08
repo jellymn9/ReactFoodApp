@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { StateType } from "../../store/index";
 import { ProductType } from "../../store/products/products.reducer";
-import { GET_PRODUCTS } from "../../store/actions.constants";
+import { getProductsRequest } from "../../store/products/products.actions";
 
 const AvailableMeals = function () {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const AvailableMeals = function () {
   );
 
   useEffect(() => {
-    dispatch({ type: GET_PRODUCTS });
+    dispatch(getProductsRequest());
   }, []);
 
   return (

@@ -1,12 +1,21 @@
 import { getProducts } from "../../services/products.service";
-import { ActionTypeT, GET_PRODUCTS_SUCCESS } from "../actions.constants";
+import {
+  ActionTypeT,
+  GET_PRODUCTS_SUCCESS,
+  GET_PRODUCTS_FAILURE,
+  ActionWithPayload,
+  ActionWithoutPayload,
+} from "../actions.constants";
+import { getProductsSuccees, getProductsFailure } from "./products.actions";
 
-async function fetchProducts(
-  nextFunction: (action: { type: ActionTypeT; data: any }) => any
-) {
-  const products = await getProducts();
-  return nextFunction({ type: GET_PRODUCTS_SUCCESS, data: products });
-  // include Failure action too
+async function fetchProducts(nextFunction: any) {
+  try {
+    const products = await getProducts();
+    return nextFunction(getProductsSuccees(products));
+  } catch (error) {
+    // add side effect handler
+    return nextFunction(getProductsFailure());
+  }
 }
 
 export { fetchProducts };
