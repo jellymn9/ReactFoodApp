@@ -7,20 +7,20 @@ export const ADD = "ADD";
 export const REMOVE = "REMOVE";
 
 // type test = "bla" | "BLA";
-export type ActionTypeT =
-  | typeof INCREASE_AMOUNT
-  | typeof DECREASE_AMOUNT
-  | typeof GET_PRODUCTS
-  | typeof GET_PRODUCTS_SUCCESS
-  | typeof ADD
-  | typeof REMOVE
-  | typeof GET_PRODUCTS_FAILURE;
+// export type ActionTypeT =
+//   | typeof INCREASE_AMOUNT
+//   | typeof DECREASE_AMOUNT
+//   | typeof GET_PRODUCTS
+//   | typeof GET_PRODUCTS_SUCCESS
+//   | typeof ADD
+//   | typeof REMOVE
+//   | typeof GET_PRODUCTS_FAILURE;
 
-export type ActionWithPayload = {
-  type: ActionTypeT;
-  data: any; // change later
-};
+// export type ActionWithPayload = {
+//   type: ActionTypeT;
+//   data: any; // change later
+// };
 
-export type ActionWithoutPayload = {
-  type: ActionTypeT;
-};
+// export type ActionWithoutPayload = {
+//   type: ActionTypeT;
+// };
