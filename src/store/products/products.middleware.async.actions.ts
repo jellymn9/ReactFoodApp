@@ -1,14 +1,10 @@
 import { getProducts } from "../../services/products.service";
-import {
-  ActionTypeT,
-  GET_PRODUCTS_SUCCESS,
-  GET_PRODUCTS_FAILURE,
-  ActionWithPayload,
-  ActionWithoutPayload,
-} from "../actions.constants";
+import * as T from "./product.types";
 import { getProductsSuccees, getProductsFailure } from "./products.actions";
 
-async function fetchProducts(nextFunction: any) {
+async function fetchProducts(
+  nextFunction: (action: T.getProductsFailure | T.getProductsSuccess) => unknown
+) {
   try {
     const products = await getProducts();
     return nextFunction(getProductsSuccees(products));

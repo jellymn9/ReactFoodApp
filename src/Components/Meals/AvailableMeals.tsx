@@ -3,7 +3,7 @@ import MealItem from "./MealItem/MealItem";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { StateType } from "../../store/index";
-import { ProductType } from "../../store/products/products.reducer";
+import { ProductType } from "../../store/products/product.types";
 import { getProductsRequest } from "../../store/products/products.actions";
 
 const AvailableMeals = function () {

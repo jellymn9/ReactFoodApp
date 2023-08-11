@@ -1,4 +1,4 @@
-import { ProductType } from "../store/products/products.reducer";
+import { ProductType } from "../store/products/product.types";
 
 const url = new URL("https://641ec6d6ad55ae01ccafadc3.mockapi.io/products");
 
