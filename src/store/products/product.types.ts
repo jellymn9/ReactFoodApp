@@ -1,8 +1,5 @@
-import {
-  GET_PRODUCTS,
-  GET_PRODUCTS_SUCCESS,
-  GET_PRODUCTS_FAILURE,
-} from "../actions.constants";
+import * as C from "./products.constants";
+import { IAction, IActionWithPayload } from "../types";
 
 export type ProductType = {
   id: string;
@@ -11,21 +8,16 @@ export type ProductType = {
   price: number;
 };
 
-//try add supertype so type must be string
-interface IActionWithPayload<ActionType, PayloadType> {
-  type: ActionType;
-  data: PayloadType;
-}
+export interface getProducts extends IAction<typeof C.GET_PRODUCTS> {}
 
-interface IAction<ActionType> {
-  type: ActionType;
-}
-
-export interface getProducts extends IAction<typeof GET_PRODUCTS> {}
 export interface getProductsSuccess
-  extends IActionWithPayload<typeof GET_PRODUCTS_SUCCESS, Array<ProductType>> {}
+  extends IActionWithPayload<
+    typeof C.GET_PRODUCTS_SUCCESS,
+    Array<ProductType>
+  > {}
+
 export interface getProductsFailure
-  extends IAction<typeof GET_PRODUCTS_FAILURE> {}
+  extends IAction<typeof C.GET_PRODUCTS_FAILURE> {}
 
 export type ProductActionT =
   | getProducts

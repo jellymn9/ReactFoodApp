@@ -2,6 +2,7 @@ import MealItemForm from "./MealItemForm";
 import { MealItemWrapper } from "./MealItem.styled";
 import { useDispatch } from "react-redux";
 import { ItemT } from "../../../store/index";
+import * as A from "../../../store/items/items.actions";
 
 interface MealItemProps {
   name: string;
@@ -16,15 +17,14 @@ const MealItem = function (props: MealItemProps) {
   // const price = `$${props.price.toFixed(2)}`;
 
   const addToCartHandler = (amount: number) => {
-    dispatch<{ type: "ADD"; data: ItemT }>({
-      type: "ADD",
-      data: {
+    dispatch(
+      A.addItem({
         amount: amount,
         name: props.name,
         price: props.price,
         id: props.id,
-      },
-    });
+      })
+    );
   };
 
   return (

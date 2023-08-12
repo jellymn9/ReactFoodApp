@@ -1,9 +1,8 @@
-export interface IActionWithPayload<PayloadType> {
-  (payload: PayloadType): { type: string; data: PayloadType };
+export interface IActionWithPayload<ActionType, PayloadType> {
+  type: ActionType & string;
+  data: PayloadType;
 }
 
-export interface IActionWithoutPayload {
-  (): { type: string };
+export interface IAction<ActionType> {
+  type: ActionType & string;
 }
-
-// CURRENTLY NOT IN USE

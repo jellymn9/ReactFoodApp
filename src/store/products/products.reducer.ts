@@ -1,5 +1,5 @@
-import * as C from "../actions.constants";
 import { ProductActionT, ProductType } from "./product.types";
+import * as C from "./products.constants";
 
 const products = function (
   state: Array<ProductType> = [],

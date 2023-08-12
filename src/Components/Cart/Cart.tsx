@@ -3,6 +3,8 @@ import { ModalCard, Backdrop } from "../UI/GlobalStyle.styled";
 import CartItem from "./CartItem";
 import { useSelector, useDispatch } from "react-redux";
 import { StateI, ItemT } from "../../store/index";
+import * as A from "../../store/items/items.actions";
+
 interface CartTemplateProps {
   cartItems: ItemT[];
   totalAmount: number;
@@ -41,11 +43,11 @@ const Cart = function (props: { handleClose: () => void }) {
   const totalAmount = useSelector<StateI, number>((state) => state.totalAmount);
 
   const addItem = (item: ItemT) => {
-    dispatch<{ type: "ADD"; data: ItemT }>({ type: "ADD", data: item });
+    dispatch(A.addItem(item));
   };
 
   const removeItem = (item: ItemT) => {
-    dispatch<{ type: "REMOVE"; data: ItemT }>({ type: "REMOVE", data: item });
+    dispatch(A.removeItem(item));
   };
 
   return (

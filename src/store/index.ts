@@ -1,6 +1,5 @@
 import { legacy_createStore as createStore, applyMiddleware } from "redux"; // use reduxToolKit later
 import loggerMiddleware from "./customMiddleware";
-import ActionT from "redux";
 
 import reducers from "./reducers";
 

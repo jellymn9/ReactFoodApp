@@ -1,9 +1,10 @@
 import totalAmount from "../totalAmount/totalAmount.reducer";
-import { useDispatch } from "react-redux";
+import * as T from "./items.types";
+import * as C from "./items.constants";
 
 // const dispatch = useDispatch();
 
-function addItem(items: Array<ItemT>, data: ItemT) {
+function addItem(items: Array<T.ItemT>, data: T.ItemT) {
   let updatedItems = [...items];
   const indexOfExsistingItem = items.findIndex((item: any) => {
     return item.id === data.id;
@@ -24,7 +25,7 @@ function addItem(items: Array<ItemT>, data: ItemT) {
   return updatedItems;
 }
 
-function removeItem(items: Array<ItemT>, data: ItemT) {
+function removeItem(items: Array<T.ItemT>, data: T.ItemT) {
   let updatedItems = [...items];
   const indexOfExsistingItem = items.findIndex((item: any) => {
     return item.id === data.id;
@@ -41,21 +42,12 @@ function removeItem(items: Array<ItemT>, data: ItemT) {
   return items;
 }
 
-type ActionTypeT = "ADD" | "REMOVE";
-
-type ItemT = { id: string; name: string; amount: number; price: number };
-
-type ActionT = {
-  type: ActionTypeT;
-  data: ItemT;
-};
-
-const items = function (state: Array<ItemT> = [], action: ActionT) {
+const items = function (state: Array<T.ItemT> = [], action: T.ItemActionT) {
   switch (action.type) {
-    case "ADD":
-      return addItem(state, action.data);
-    case "REMOVE":
-      return removeItem(state, action.data);
+    case C.ADD_ITEM:
+      return addItem(state, action.data); // move all login from reducer
+    case C.REMOVE_ITEM:
+      return removeItem(state, action.data); // move all login from reducer
     default:
       return state;
   }
