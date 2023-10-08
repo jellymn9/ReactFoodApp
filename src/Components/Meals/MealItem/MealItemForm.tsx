@@ -1,16 +1,8 @@
 import Input from "../../UI/Input";
-import { InputHTMLAttributes, useContext, useEffect, useState } from "react";
-import CartContext from "../../../store/cart-context";
+import { useState } from "react";
 import { useRef } from "react";
-import { isPropertySignature } from "typescript";
 
 const MealItemForm = function (props: any) {
-  // const [item, setItem] = useState({});
-  // const cartCtx = useContext(CartContext);
-  // useEffect(() => {
-  //   cartCtx.addItem()(item);
-  // }, [item]);
-
   const [amountIsValid, setAmountIsValid] = useState(true);
 
   const amountInputRef: any = useRef();
@@ -43,19 +35,7 @@ const MealItemForm = function (props: any) {
           defaultValue: "1",
         }}
       />
-      <button
-        onClick={(e) => {
-          // setItem({
-          //   id: "m1",
-          //   name: "Sushi",
-          //   description: "Finest fish and veggies",
-          //   price: 22.99,
-          //   amount: 1,
-          // });
-        }}
-      >
-        + Add
-      </button>
+      <button onClick={(e) => {}}>+ Add</button>
       {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}
     </form>
   );

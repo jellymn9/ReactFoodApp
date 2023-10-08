@@ -1,7 +1,8 @@
 import MealItemForm from "./MealItemForm";
 import { MealItemWrapper } from "./MealItem.styled";
-import { useContext } from "react";
-import CartContext from "../../../store/cart-context";
+import { useDispatch } from "react-redux";
+import { ItemT } from "../../../store/index";
+import * as A from "../../../store/items/items.actions";
 
 interface MealItemProps {
   name: string;
@@ -11,17 +12,19 @@ interface MealItemProps {
 }
 
 const MealItem = function (props: MealItemProps) {
-  const cartCtx = useContext(CartContext);
+  const dispatch = useDispatch();
 
-  const price = `$${props.price.toFixed(2)}`;
+  // const price = `$${props.price.toFixed(2)}`;
 
   const addToCartHandler = (amount: number) => {
-    cartCtx.addItem({
-      amount: amount,
-      name: props.name,
-      price: props.price,
-      id: props.id,
-    });
+    dispatch(
+      A.addItem({
+        amount: amount,
+        name: props.name,
+        price: props.price,
+        id: props.id,
+      })
+    );
   };
 
   return (
@@ -29,7 +32,7 @@ const MealItem = function (props: MealItemProps) {
       <div>
         <h3>{props.name}</h3>
         <div>{props.description}</div>
-        <div>{price}</div>
+        <div>{props.price}</div>
       </div>
       <div>
         <MealItemForm onAddToCart={addToCartHandler} />
