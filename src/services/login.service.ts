@@ -1,14 +1,19 @@
-const url = new URL("https://641ec6d6ad55ae01ccafadc3.mockapi.io/users");
+const url = new URL("https://json-placeholder.mock.beeceptor.com/login"); //new URL("https://641ec6d6ad55ae01ccafadc3.mockapi.io/users");
 
-export const getUsers = async (username: string) => {
-  url.searchParams.append("name", username);
+export const getUsers = async (
+  username: string,
+  password: string | undefined // why it require undefined????
+) => {
   return fetch(url, {
-    method: "GET",
+    method: "POST",
     headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      username: username,
+      password: password,
+    }),
   })
     .then((res) => {
       if (res.ok) {
-        // console.log(res.json());
         return res.json();
       } else {
         return new Error("User does not exist!");

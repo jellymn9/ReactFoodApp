@@ -2,8 +2,6 @@ import totalAmount from "../totalAmount/totalAmount.reducer";
 import * as T from "./items.types";
 import * as C from "./items.constants";
 
-// const dispatch = useDispatch();
-
 function addItem(items: Array<T.ItemT>, data: T.ItemT) {
   let updatedItems = [...items];
   const indexOfExsistingItem = items.findIndex((item: any) => {
@@ -17,11 +15,6 @@ function addItem(items: Array<T.ItemT>, data: T.ItemT) {
   } else {
     updatedItems = [...items, data];
   }
-  //   dispatch({
-  //     type: "INCREASE_AMOUNT",
-  //     data: { price: data.price, amount: data.amount },
-  //   });
-  // should I use store.dispatch instead? Could not be used useDispatch outside React component or custom hook
   return updatedItems;
 }
 
