@@ -1,6 +1,5 @@
 import { legacy_createStore as createStore, applyMiddleware } from "redux"; // use reduxToolKit later
 import loggerMiddleware from "./customMiddleware";
-
 import reducers from "./reducers";
 
 export type ItemT = { id: string; name: string; amount: number; price: number };

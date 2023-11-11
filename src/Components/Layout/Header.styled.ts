@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SpaggetiImage from "../../assets/spaghetti.jpg";
+import SpaggetiImage from "src/assets/spaghetti.jpg";
 
 export const HeaderStyle = styled.div`
   position: fixed;
@@ -13,15 +13,15 @@ export const HeaderStyle = styled.div`
 `;
 
 export const FoodImage = styled.div`
-    background-image: url(${SpaggetiImage});
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 200px;
+  background-image: url(${SpaggetiImage});
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 200px;
 `;
 
 export const CartBtn = styled.button`
-    border-radius: 5%;
-    background-color: #99b1c6;
-    border-color: #d8dadc;
-`
+  border-radius: 5%;
+  background-color: #99b1c6;
+  border-color: #d8dadc;
+`;

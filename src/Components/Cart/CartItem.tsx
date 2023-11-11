@@ -1,5 +1,4 @@
-import React from "react";
-import { Offset } from "../UI/GlobalStyle.styled";
+import { Offset } from "src/components/UI/GlobalStyle.styled";
 
 const CartItem = (props: any) => {
   const price = `$${props.price}`;

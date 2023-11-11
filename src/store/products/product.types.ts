@@ -1,5 +1,5 @@
+import { IAction, IActionWithPayload } from "src/store/types";
 import * as C from "./products.constants";
-import { IAction, IActionWithPayload } from "../types";
 
 export type ProductType = {
   id: string;

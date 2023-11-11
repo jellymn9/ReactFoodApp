@@ -1,6 +1,8 @@
+import { IAction, IActionWithPayload } from "src/store/types";
 import * as C from "./auth.constants";
-import { IAction, IActionWithPayload } from "../types";
 
 export interface login extends IActionWithPayload<typeof C.LOGIN, string> {}
 
-export type AuthActionT = login;
+export interface setAutorization extends IAction<typeof C.SET_AUTHORIZATION> {}
+
+export type AuthActionT = login | setAutorization;

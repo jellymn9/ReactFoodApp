@@ -1,6 +1,6 @@
-import Input from "../../UI/Input";
-import { useState } from "react";
-import { useRef } from "react";
+import { useState, useRef } from "react";
+
+import Input from "src/components/UI/Input";
 
 const MealItemForm = function (props: any) {
   const [amountIsValid, setAmountIsValid] = useState(true);

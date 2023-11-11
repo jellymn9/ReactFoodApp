@@ -1,5 +1,5 @@
-import { fetchProducts } from "./products/products.middleware.async.actions";
-import { GET_PRODUCTS } from "./products/products.constants";
+import { fetchProducts } from "src/store/products/products.middleware.async.actions";
+import { GET_PRODUCTS } from "src/store/products/products.constants";
 import { ActionTypeT } from "./actions.constants";
 
 const loggerMiddleware =

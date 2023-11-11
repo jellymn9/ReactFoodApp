@@ -1,25 +1,30 @@
 import { Route, Routes } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
-import { StateType } from "../../store/index";
-import Login from "../Login/Login";
-import Meals from "../Meals/Meals";
+import * as A from "src/store/auth/auth.actions";
+import Login from "src/components/Login/Login";
+import Meals from "src/components/Meals/Meals";
+import RequireAuth from "src/components/Routes/RequireAuth";
 
 function AllRoutes() {
-  const isUserAuthorized = useSelector<StateType, boolean>(
-    (state) => state.auth.isUserAuthorized
-  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(A.setAutorization());
+  }, []);
+
   return (
     <Routes>
-      {isUserAuthorized ? (
-        <>
-          <Route path="/" element={<Meals />} />
-        </>
-      ) : (
-        <>
-          <Route path="/login" element={<Login />} />
-        </>
-      )}
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/"
+        element={
+          <RequireAuth>
+            <Meals />
+          </RequireAuth>
+        }
+      />
     </Routes>
   );
 }

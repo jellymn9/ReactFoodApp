@@ -1,9 +1,10 @@
 import ReactDOM from "react-dom";
-import { ModalCard, Backdrop } from "../UI/GlobalStyle.styled";
-import CartItem from "./CartItem";
 import { useSelector, useDispatch } from "react-redux";
-import { StateI, ItemT } from "../../store/index";
-import * as A from "../../store/items/items.actions";
+
+import { StateI, ItemT } from "src/store/index";
+import * as A from "src/store/items/items.actions";
+import { ModalCard, Backdrop } from "src/components/UI/GlobalStyle.styled";
+import CartItem from "./CartItem";
 
 interface CartTemplateProps {
   cartItems: ItemT[];

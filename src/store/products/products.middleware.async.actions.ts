@@ -1,4 +1,4 @@
-import { getProducts } from "../../services/products.service";
+import { getProducts } from "src/services/products.service";
 import * as T from "./product.types";
 import { getProductsSuccees, getProductsFailure } from "./products.actions";
 

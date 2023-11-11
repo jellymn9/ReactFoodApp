@@ -1,4 +1,3 @@
-import totalAmount from "../totalAmount/totalAmount.reducer";
 import * as T from "./items.types";
 import * as C from "./items.constants";
 

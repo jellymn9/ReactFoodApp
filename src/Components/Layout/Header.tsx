@@ -1,9 +1,7 @@
+import { HeaderStyle, FoodImage } from "./Header.styled";
+import HeaderBtn from "./HeaderBtn";
 
-import { HeaderStyle, FoodImage } from './Header.styled'
-// import FoodImage from '../../assets/spaghetti.jpg'
-import HeaderBtn from './HeaderBtn'
-
-const Header = function (props: {handleOpen: () => void}) {
+const Header = function (props: { handleOpen: () => void }) {
   return (
     <>
       <HeaderStyle>
@@ -12,7 +10,7 @@ const Header = function (props: {handleOpen: () => void}) {
       </HeaderStyle>
       <FoodImage />
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

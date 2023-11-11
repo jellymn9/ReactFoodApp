@@ -1,7 +1,8 @@
-import CartIcon from "../Cart/CartIcon";
-import { CartBtn } from "../Layout/Header.styled";
 import { useSelector } from "react-redux";
-import { StateI, ItemT } from "../../store";
+
+import { StateI, ItemT } from "src/store";
+import CartIcon from "src/components/Cart/CartIcon";
+import { CartBtn } from "./Header.styled";
 
 const HeaderBtn = function (props: { handleOpen: () => void }) {
   const items = useSelector<StateI, ItemT[]>((state) => state.items);

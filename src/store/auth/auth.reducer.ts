@@ -1,7 +1,7 @@
 import {
   addTokenToLocalStorage,
   checkTokenExistance,
-} from "../../helpers/loginHelper";
+} from "src/helpers/loginHelper";
 import { AuthActionT } from "./auth.types";
 import * as C from "./auth.constants";
 
@@ -14,10 +14,16 @@ const login = (token: string) => {
   return { isUserAuthorized: checkTokenExistance() };
 };
 
+const checkLocalStorageToken = () => {
+  return { isUserAuthorized: checkTokenExistance() };
+};
+
 const auth = function (state = defaultAuthState, action: AuthActionT) {
   switch (action.type) {
     case C.LOGIN:
       return login(action.data);
+    case C.SET_AUTHORIZATION:
+      return checkLocalStorageToken();
     default:
       return state;
   }

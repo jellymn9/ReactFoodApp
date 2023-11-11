@@ -2,10 +2,10 @@ import { useState } from "react";
 
 import Header from "src/components/Layout/Header";
 import Cart from "src/components/Cart/Cart";
-import MealsSummary from "./MealsSummary";
-import AvailableMeals from "./AvailableMeals";
+import MealsSummary from "src/components/Meals/MealsSummary";
+import AvailableMeals from "src/components/Meals/AvailableMeals";
 
-const Meals = function () {
+const MealsPage = function () {
   const [isCartOpened, setCartOpen] = useState(false);
 
   const onClose = () => {
@@ -25,4 +25,4 @@ const Meals = function () {
   );
 };
 
-export default Meals;
+export default MealsPage;

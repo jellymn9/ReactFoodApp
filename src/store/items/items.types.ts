@@ -1,5 +1,5 @@
+import { IActionWithPayload } from "src/store/types";
 import * as C from "./items.constants";
-import { IActionWithPayload } from "../types";
 
 export type ItemT = { id: string; name: string; amount: number; price: number };
 
